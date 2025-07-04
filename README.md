@@ -198,8 +198,36 @@ The server is configured to accept requests from any origin. In production, you 
    - Ensure the frontend is making requests to the correct backend URL
    - Check that CORS is properly configured
 
-## Contributing
 
-1. Make sure to test all endpoints after making changes
-2. Follow the existing code style and structure
-3. Update this README if you add new features or endpoints
+🔌 Connecting to Neon PostgreSQL (Cloud Database)
+You can connect this backend to a cloud PostgreSQL database using Neon:
+
+Steps:
+Create a Neon project at https://neon.tech
+
+Copy the PostgreSQL connection string (in psql format)
+
+Replace your local DB URL in .env:
+
+env
+Copy
+Edit
+DATABASE_URL=postgresql://username:password@your-project-name.region.neon.tech/dbname?sslmode=require
+Enable SSL in db.js:
+
+js
+Copy
+Edit
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false }
+});
+Apply your CREATE TABLE scripts using Neon’s SQL editor
+
+Run the server with:
+
+bash
+Copy
+Edit
+node index.js
+☁️ Your backend is now using a scalable, cloud-based PostgreSQL database powered by Neon.
