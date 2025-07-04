@@ -68,6 +68,9 @@ CREATE TABLE chat_history (
 
 ## Running the Server
 
+cd backend
+node index.js
+
 ### Development Mode
 ## Running the Server
 
